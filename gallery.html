@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery | Dastarkhwan Zaiqa</title>
+<!-- Google Fonts: Playfair Display (headings) + Poppins (text) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Font Awesome: saare icons yahan se aate hain -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- AOS: scroll par cheezein aram aram aati hain -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Hamari apni CSS file -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- ===== HEADER / NAVBAR: sab pages par upar (sticky) ===== -->
+<header class="header"><nav class="nav">
+  <!-- Logo / website ka naam -->
+  <a href="index.html" class="logo"><i class="fa-solid fa-utensils"></i><span>Dastarkhwan <em>Zaiqa</em></span></a>
+  <!-- Menu links (mobile par burger se khulte hain) -->
+  <ul class="menu" id="menu"><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="gallery.html" class="active">Gallery</a></li><li><a href="about.html">About</a></li></ul>
+  <!-- Order button: menu page par le jata hai -->
+  <a href="menu.html" class="btn btn-o">Order Now</a>
+  <!-- Mobile burger button -->
+  <button class="burger" id="burger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+</nav></header>
+
+<main>
+<!-- ===== PAGE BANNER: navbar ke neeche wala banner (background image CSS mein: .b-gallery) ===== -->
+<section class="p-banner b-gallery" data-aos="fade-up"><div class="wrap"><small>Gallery</small><h1>Our Signature Plates</h1><p>A glimpse of our signature dishes. Tap any image to order instantly.</p></div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <!-- ===== GALLERY GRID (masonry): JS se images aati hain ===== -->
+  <div class="gal" id="gallery"></div>
+</div></section>
+</main>
+
+<!-- ===== LIGHTBOX: image par click karne par bari image + order button ===== -->
+<div class="lb" id="lb">
+  <button class="x" id="lbClose" aria-label="Close">×</button>
+  <img id="lbImg" src="" alt="">
+  <h3 id="lbName"></h3>
+  <button class="btn" id="lbOrder" data-order=""><i class="fa-solid fa-bag-shopping"></i> Order Now</button>
+</div>
+
+<!-- ===== FOOTER: sab pages par neeche ===== -->
+<footer class="footer">
+  <div class="f-grid">
+    <!-- Brand + social icons -->
+    <div>
+      <a href="index.html" class="logo"><i class="fa-solid fa-utensils"></i><span>Dastarkhwan <em>Zaiqa</em></span></a>
+      <p style="margin-top:14px">The taste of home, presented with royal elegance. Fresh ingredients, traditional spices, and food made straight from the heart.</p>
+      <div class="f-soc">
+        <!-- WhatsApp: click karte hi customer seedha aap ko message kar sakta hai -->
+        <a href="https://wa.me/923286754385?text=Hello%21%20I%20would%20like%20to%20place%20an%20order%20/%20get%20information%20from%20Dastarkhwan%20Zaiqa." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <!-- Instagram: aap ka account khulta hai -->
+        <a href="https://www.instagram.com/muhammadarslan25971/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <!-- Quick links -->
+    <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="about.html">About Us</a></li></ul></div>
+    <!-- Timing + location (JS se SITE settings se bharta hai) -->
+    <div><h4>Visit Us</h4><ul>
+      <li><i class="fa-solid fa-location-dot" style="color:var(--gold);width:20px"></i><span data-site="address">Address</span></li>
+      <li><i class="fa-solid fa-clock" style="color:var(--gold);width:20px"></i><span data-site="hours">Timing</span></li>
+      <li><i class="fa-solid fa-phone" style="color:var(--gold);width:20px"></i><span data-site="phone">Phone</span></li></ul></div>
+    <!-- WhatsApp order box -->
+    <div><h4>Order on WhatsApp</h4><p>Chat with us directly for a quick response.</p><br>
+      <a href="https://wa.me/923286754385?text=Hello%21%20I%20would%20like%20to%20place%20an%20order%20/%20get%20information%20from%20Dastarkhwan%20Zaiqa." target="_blank" rel="noopener" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat Now</a></div>
+  </div>
+  <div class="f-bot">© 2026 Dastarkhwan Zaiqa — All rights reserved.</div>
+</footer>
+
+<!-- ===== BACK TO TOP BUTTON (neeche right corner): click karte hi page seedha upar chala jata hai ===== -->
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- ===== ORDER POPUP: kisi bhi "Order Now" button par khulta hai ===== -->
+<div class="omodal" id="omodal">
+  <div class="obox">
+    <button class="oclose" id="oClose" aria-label="Close">×</button>
+
+    <!-- Step 1: order form -->
+    <div id="oForm">
+      <!-- Dish ki image, naam, price -->
+      <div class="o-head"><img id="oImg" src="" alt=""><div><span id="oCat"></span><h3 id="oTitle"></h3><p id="oPrice"></p></div></div>
+      <div class="o-body">
+        <!-- Quantity: - aur + button se kam/zyada -->
+        <div class="o-row"><label style="margin:0">Quantity</label><div class="stepper"><button id="qMinus" type="button">−</button><span id="qVal">1</span><button id="qPlus" type="button">+</button></div></div>
+        <!-- Spice level (dessert/drink par nahi dikhta) -->
+        <div id="spiceRow"><label>Spice Level</label><div class="o-chips" id="spice"><button class="chip" data-s="Mild" type="button">Mild</button><button class="chip on" data-s="Medium" type="button">Medium</button><button class="chip" data-s="Hot" type="button">Hot</button></div></div>
+        <!-- Special instructions -->
+        <div><label>Special Instructions (optional)</label><textarea id="oNote" placeholder="e.g. less oil, extra raita..."></textarea></div>
+        <!-- Customer ki details -->
+        <div class="o-2"><div><label>Full Name</label><input id="oName" placeholder="Your name"></div><div><label>Phone</label><input id="oPhone" type="tel" placeholder="03XX-XXXXXXX"></div></div>
+        <div><label>Delivery Address</label><input id="oAddr" placeholder="House #, street, area, city"></div>
+        <!-- Payment methods: COD / JazzCash / EasyPaisa / Bank -->
+        <div><label>Payment Method</label><div class="pay-tabs" id="payTabs">
+          <button class="pay-tab on" data-pay="Cash on Delivery" type="button"><i class="fa-solid fa-money-bill-wave"></i>COD</button>
+          <button class="pay-tab" data-pay="JazzCash" type="button"><i class="fa-solid fa-mobile-screen"></i>JazzCash</button>
+          <button class="pay-tab" data-pay="EasyPaisa" type="button"><i class="fa-solid fa-wallet"></i>EasyPaisa</button>
+          <button class="pay-tab" data-pay="Bank Transfer" type="button"><i class="fa-solid fa-building-columns"></i>Bank</button></div></div>
+        <!-- Payment ki details (JS bharta hai) -->
+        <div class="pay-info" id="payInfo"></div>
+        <!-- Bill summary -->
+        <div class="o-sum"><div><span>Subtotal</span><span id="sSub"></span></div><div><span>Delivery</span><span id="sDel"></span></div><div class="tot"><span>Total</span><span id="sTot"></span></div></div>
+        <div class="o-err" id="oErr"></div>
+        <button class="btn" id="oConfirm" type="button"><i class="fa-solid fa-circle-check"></i> Confirm Order</button>
+      </div>
+    </div>
+
+    <!-- Step 2: order ho gaya (thank you) -->
+    <div class="o-done" id="oDone" hidden>
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Order Received!</h3>
+      <p>Order ID: <b id="doneId"></b></p>
+      <div class="box" id="doneBox"></div>
+      <p>Send your order using the button below so we can confirm it right away.</p>
+      <a class="btn btn-wa" id="doneWa" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Send Order on WhatsApp</a>
+      <button class="btn btn-o" id="doneClose" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- AOS library, phir hamari JavaScript -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
